@@ -17,10 +17,10 @@ RUN pip install --no-cache-dir \
 RUN opentelemetry-bootstrap -a install
 
 # 复制应用代码
-COPY app.py .
+COPY main.py .
 
 # 设置环境变量用于无侵入式追踪
 ENV PYTHONPATH="/app:${PYTHONPATH}"
 
 # 启动命令（使用opentelemetry-instrument包装器来实现无侵入式追踪）
-CMD ["opentelemetry-instrument", "python", "app.py"]
+CMD ["opentelemetry-instrument", "python", "main.py"]
